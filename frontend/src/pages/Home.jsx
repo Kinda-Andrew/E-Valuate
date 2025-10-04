@@ -1,13 +1,21 @@
 import React from "react";
 import './Home.css'
+ 
 
 function Home(){
 
 
 return(
     <>
+    <video autoplay muted loop id="video">
+    <source src="/assets/video.mp4" type="video/mp4"/>
+    </video>
 
-    <h1> Home Page </h1>
+    <div className = "title"> Evaluate </div>
+
+ 
+
+
 
     </>
 
