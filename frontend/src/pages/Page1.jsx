@@ -64,6 +64,8 @@ function Page1() {
               Home!
             </Link>
           </div>
+          <div className = "header"> <h1> Eco-vision</h1> </div>
+
 
           <div className="grid">
             <div className="item1">
