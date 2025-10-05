@@ -62,7 +62,10 @@ return(
             </Link>
         </div>
             <div className = "leftscreenshot">
-            <img src = "./screenshot.png" height = "90%" width = "80%"></img>
+            <Link to="/Page1" style={{ textDecoration: 'none' , color: "white"}}>
+     
+            
+            <img src = "./screenshot.png" height = "90%" width = "80%"></img></Link>
             </div>
 
             <div className = "leftpara">
@@ -81,7 +84,9 @@ return(
             </div>
             <div className = "rightscreenshot">
 
-            <img src = "./scout.png" height = "100%" width = "80%"></img>
+            <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
+     
+            <img src = "./scout.png" height = "100%" width = "80%"></img></Link>
             </div>
 
             <div className = "rightpara">

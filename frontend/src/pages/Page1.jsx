@@ -1,6 +1,8 @@
 import React from "react";
 import './Page1.css'
+import Home from './Home';
 import { useState } from "react";
+import {Link} from "react-router-dom";
 
 
 
@@ -33,6 +35,13 @@ function Page1(){
         
         
         <>
+        <div className = "button2">
+        <Link to="/" style={{ textDecoration: 'none' , color: "white"}}>
+        Home!
+        </Link>
+        </div>
+
+
         <div className="grid">
             <div class="item1">
             <form onSubmit={handleSubmit}>
