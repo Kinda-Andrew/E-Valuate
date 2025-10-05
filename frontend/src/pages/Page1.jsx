@@ -1,8 +1,8 @@
 import React from "react";
 import './Page1.css'
-import Home from './Home';
 import { useState } from "react";
 import {Link} from "react-router-dom";
+
 
 
 
@@ -40,7 +40,10 @@ function Page1(){
         Home!
         </Link>
         </div>
-
+        <div className = "header"> <h1> Eco-vision</h1>    </div>
+        
+ 
+       
 
         <div className="grid">
             <div class="item1">
