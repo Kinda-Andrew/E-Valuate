@@ -8,7 +8,7 @@ function Home(){
 return(
     <>
 
-<video autoPlay muted loop id="video">
+<video autoPlay muted loop id="video" height = "100%" width = "100%">
     <source src="/rain.mp4" type="video/mp4"/>
     </video>
 

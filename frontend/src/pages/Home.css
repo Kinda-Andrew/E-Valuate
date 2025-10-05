@@ -4,13 +4,14 @@
     text-align: center;
     padding: 10%;
     z-index:2;
+    margin-top: -20%;
  
 }
  
 .video {
     z-index: 1;
-    position: absolute;
-    margin-top: -40%;
+    padding: -5%;
+     
 }
 
 .lowerpart {
