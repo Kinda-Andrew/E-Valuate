@@ -65,7 +65,7 @@ return(
             <Link to="/Page1" style={{ textDecoration: 'none' , color: "white"}}>
      
             
-            <img src = "./screenshot.png" height = "90%" width = "80%"></img></Link>
+            <img src = "./evision.png" height = "80%" width = "70%"></img></Link>
             </div>
 
             <div className = "leftpara">
