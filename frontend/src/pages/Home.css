@@ -35,7 +35,6 @@ body {
  }
 
 .button1 {
- 
     text-align: center;
     font-size: 200%;
     width: 20wh;
@@ -47,7 +46,6 @@ body {
     background-color: green;
 
 }
-
 
 .button2 {
     text-align: center;
@@ -71,27 +69,28 @@ body {
     border-top-width: 3%;
     padding: 5%;
     
-     
 }
 
 
 .leftside {
-
     float: left;
     display: inline-grid;
-
     text-align: center;
     width:42%;
     border-radius: 25px;
     background-color: darkgray;
     padding: 3%;
 
+}
 
-
+.leftside:hover{
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
 }
 
 .leftsidetext {
     margin-bottom: 25px;
+
 }
 
 .rightside {
@@ -100,11 +99,16 @@ body {
     padding: 3%;
 
     
-     text-align: center;
+    text-align: center;
     width:42%;
     border-radius: 27px;
     background-color: darkgray;
 
+}
+
+.rightside:hover{
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
 }
 
 .rightsidetext {
@@ -112,10 +116,9 @@ body {
 }
 
 Link:hover {
-
     text-decoration: none;
     
-    } 
+} 
 
 .description {
     text-align: center;
