@@ -48,26 +48,34 @@ return(
     <div className = "lowerpart">
        
         <div className = "description">
-            <p>THIS IS A DESCRIPTION</p>
+            <p> Same environment, different view</p>
         </div>
     
+ 
     
         <div className = "leftside">
-            <div className = "leftsidetext">
-                This is the left side
-            </div>
-            
+        <div className = "button3">
+
+            <Link to="/Page1" style={{ textDecoration: 'none' , color: "white"}}>
+            Eco-Vision
+    
+            </Link>
+        </div>
+            <div className = "leftscreenshot">
             <img src = "./screenshot.png" height = "100%" width = "100%"></img>
-        
+            </div>
         </div>
 
         <div className = "rightside">
-            <div className = "rightsidetext">
-                This is the right side
+            <div className = "button4">
+                <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
+                Scout
+                </Link>
             </div>
-            
+            <div className = "rightscreenshot">
+
             <img src = "./screenshot.png" height = "100%" width = "100%"></img>
-           
+            </div>
         </div>
 
     </div>
