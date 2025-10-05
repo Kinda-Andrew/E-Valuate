@@ -63,11 +63,12 @@ function Page1() {
             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               Home!
             </Link>
+
+            
           </div>
-          <div className = "header"> <h1> Eco-vision</h1> </div>
+          
 
-
-          <div className="grid">
+           <div className="grid">
             <div className="item1">
               <form onSubmit={handleSubmit}>
                 <input
@@ -83,6 +84,7 @@ function Page1() {
               <img src="./arrow.png" width="80px"></img>
             </div>
             <div className="item3">
+
               <img src={URL.createObjectURL(inputFile)} width="80%"></img>
             </div>
           </div>
@@ -95,7 +97,7 @@ function Page1() {
 
             {/* This part contains information about the photo */}
             <div className="info">
-              Lorus Ipusum or something i dont even know anymore
+              Please wait while the AI analyzes your image.
             </div>
           </div>
         </>
@@ -109,6 +111,7 @@ function Page1() {
             Home!
           </Link>
         </div>
+
         <div className = "header"> <h1> Eco-vision</h1> </div>
 
         <div className="grid">
@@ -160,6 +163,8 @@ function Page1() {
           </Link>
         </div>
 
+        <div className = "header"> <h1> Eco-vision</h1> </div>
+
         <div className="grid">
           <div className="item1">
             <form onSubmit={handleSubmit}>
@@ -178,6 +183,9 @@ function Page1() {
           <div className="item3"></div>
         </div>
 
+        <div className = "bitofword">
+            The AI will generate a photo of the suggested upgrades in the area below:
+            </div>
         {/* This is the bottom part */}
         <div className="bottompart">
           <div className="transformed">
@@ -185,7 +193,11 @@ function Page1() {
           </div>
 
           {/* This part contains information about the photo */}
-          <div className="info"></div>
+          <div className="info">
+          Please wait while the AI analyzes your image.
+
+          </div>
+          
         </div>
       </>
     );

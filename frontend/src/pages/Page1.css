@@ -1,6 +1,6 @@
 .grid {
     display: grid;
-    
+    width: 100%;
     gap: 10px;
     display:inline-flex;
 
@@ -29,7 +29,12 @@
     background-color: darkgray;
     border-radius: 10px;
     width: 45%;
+    
 
+}
+
+.bitofword {
+    margin-top: 2%;
 }
 
 
