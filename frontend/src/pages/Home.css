@@ -41,8 +41,6 @@ body {
     width: 20wh;
     display: inline-grid;
     border-radius: 25px;
-    color:aquamarine;
-
 
     padding-left: 3%;
     padding-right: 3%;
@@ -79,18 +77,21 @@ body {
 
 .leftside {
 
-    float:left;
+    float: left;
     display: inline-grid;
 
     text-align: center;
     width:42%;
     border-radius: 25px;
-    background-color: #848484;
+    background-color: darkgray;
     padding: 3%;
-    
 
 
 
+}
+
+.leftsidetext {
+    margin-bottom: 25px;
 }
 
 .rightside {
@@ -101,10 +102,13 @@ body {
     
      text-align: center;
     width:42%;
-    border-radius: 25px;
-    background-color: #848484;
+    border-radius: 27px;
+    background-color: darkgray;
 
- 
+}
+
+.rightsidetext {
+    margin-bottom: 25px;
 }
 
 Link:hover {
@@ -112,6 +116,13 @@ Link:hover {
     text-decoration: none;
     
     } 
+
+.description {
+    text-align: center;
+    z-index:2;
+    color: white;
+    margin-bottom: 70px;
+}
 
 
 

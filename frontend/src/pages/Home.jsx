@@ -29,7 +29,7 @@ return(
     <div className = "buttons">
     
     <div className = "button1">
-    <Link to="/Page1" style={{ textDecoration: 'none' , color: "black"}}>
+    <Link to="/Page1" style={{ textDecoration: 'none' , color: "white"}}>
     Eco-Vision
     
     </Link>
@@ -37,31 +37,37 @@ return(
 
     
     <div className = "button2">
-    <Link to="/Page2" style={{ textDecoration: 'none' , color: "black"}}>
+    <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
     Scout
     </Link>
     </div>
 
     </div>
-
     
 
     <div className = "lowerpart">
-
+       
+        <div className = "description">
+            <p>THIS IS A DESCRIPTION</p>
+        </div>
+    
     
         <div className = "leftside">
-            This is the left side
-
-        <img src = "./screenshot.png" height = "100%" width = "100%"></img>
+            <div className = "leftsidetext">
+                This is the left side
+            </div>
+            
+            <img src = "./screenshot.png" height = "100%" width = "100%"></img>
         
-
         </div>
 
         <div className = "rightside">
-            This is the right side
+            <div className = "rightsidetext">
+                This is the right side
+            </div>
+            
             <img src = "./screenshot.png" height = "100%" width = "100%"></img>
            
-        
         </div>
 
     </div>
