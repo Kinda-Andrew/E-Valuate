@@ -7,22 +7,16 @@ function Home(){
 
 return(
     <>
-   <div className = "video"> 
-        <video autoPlay muted loop id = "video">
-        <source src = "/rain.mp4" type = "video/mp4"/>
-        </video>
-    </div>
-    
 
-
-    <div className = "titlecontainer">
-      
-
-    
+<video autoPlay muted loop id="video">
+    <source src="/rain.mp4" type="video/mp4"/>
+    </video>
 
     <div className = "title"> Evaluate </div>
+    
+ 
       
-    </div>
+    
 
     <div className = "lowerpart">
 
