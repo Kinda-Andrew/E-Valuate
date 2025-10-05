@@ -37,11 +37,25 @@ def generateGeminiContent(bytes):
     rawText = response.text
     clean = re.sub(r"^```json|```$", "", rawText, flags=re.MULTILINE).strip()
     data = json.loads(clean)
-    print(data)
+    
 
     # Overlay icons based on gemini response
 
     base = Image.open(BytesIO(resp.content)).convert("RGBA")
+    width, height = base.size
+
+    #Filter out invalid data points
+    def is_valid(point):
+        return point["y"]>height/2
+    
+
+    data["trees"] = list(filter(is_valid,data["trees"]))
+    data["ev_charging"] = list(filter(is_valid,data["ev_charging"]))
+    data["bike_racks"] = list(filter(is_valid,data["bike_racks"]))
+
+
+
+
 
     
     #tree incons
@@ -49,11 +63,11 @@ def generateGeminiContent(bytes):
     for tree in data["trees"]:
         base.alpha_composite(Image.open("icons/tree.png").convert("RGBA").resize((75, 75)),dest=(tree["x"],tree["y"]))
     
-     #ev charging incons
+    #  #ev charging incons
     for charger in data["ev_charging"]:
         base.alpha_composite(Image.open("icons/charging-station.png").convert("RGBA").resize((75, 75)),dest=(charger["x"],charger["y"]))
     
-     #bike rack incons
+    #  #bike rack incons
     for bike in data["bike_racks"]:
         base.alpha_composite(Image.open("icons/bicycle.png").convert("RGBA").resize((75, 75)),dest=(bike["x"],bike["y"]))
     
@@ -66,8 +80,7 @@ def generateGeminiContent(bytes):
 
     
 
-resp = requests.get("https://everlinecoatings.com/us/wp-content/uploads/sites/2/2022/02/lifespan-of-an-asphalt-parking-lot-01-1536x1024.jpg.webp")
-
+resp = requests.get("https://as2.ftcdn.net/v2/jpg/01/13/27/09/1000_F_113270995_v0RgIm4UIV0VFJw30vM4ZeptxaeHZOuK.jpg")
 
 
 generateGeminiContent(resp.content)
