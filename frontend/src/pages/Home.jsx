@@ -67,7 +67,8 @@ return(
 
             <div className = "leftpara">
 
-                Paragraph
+                State of the art technology, focused on encouraging a greener and more environmental friendly future.
+                It utilizes the latest AI technology to generate a plan for a futuristic, yet sustainable world. 
             </div>
 
         </div>
@@ -85,7 +86,8 @@ return(
 
             <div className = "rightpara">
 
-                Paragraph
+                City planning has never been easier! With this tool, governments and industries 
+                can utilize statistical regression to propose large scale changes, leading to a brighter future. 
             </div>
         </div>
 
