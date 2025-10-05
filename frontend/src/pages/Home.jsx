@@ -62,8 +62,14 @@ return(
             </Link>
         </div>
             <div className = "leftscreenshot">
-            <img src = "./screenshot.png" height = "100%" width = "100%"></img>
+            <img src = "./screenshot.png" height = "90%" width = "80%"></img>
             </div>
+
+            <div className = "leftpara">
+
+                Paragraph
+            </div>
+
         </div>
 
         <div className = "rightside">
@@ -74,7 +80,12 @@ return(
             </div>
             <div className = "rightscreenshot">
 
-            <img src = "./screenshot.png" height = "100%" width = "100%"></img>
+            <img src = "./screenshot.png" height = "90%" width = "80%"></img>
+            </div>
+
+            <div className = "rightpara">
+
+                Paragraph
             </div>
         </div>
 
