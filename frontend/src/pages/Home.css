@@ -1,13 +1,17 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: gray;
+}
+
 .title {
     font-size: 600%;
-    font-family: cursive;
     text-align: center;
     padding: 10%;
     z-index:2;
     margin-top: -38%;
     color: white;
-
- 
+    font-weight: 500;
+    text-shadow: 2px 4px 4px black;
 }
  
 .video {
@@ -24,16 +28,15 @@
     text-align: center;
     margin-top: -3%;
     text-decoration: none;
-
-    position: relative
-    
+    position: relative;
+    gap: 80px;
+    display: flex;
+    justify-content: center;
  }
 
 .button1 {
  
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
-     font-weight: bold;
     font-size: 200%;
     width: 20wh;
     display: inline-grid;
@@ -41,25 +44,22 @@
     color:aquamarine;
 
 
-    padding-left: 5%;
-    padding-right: 5%;
-    background-color: aquamarine;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: green;
 
 }
 
 
 .button2 {
-     text-align: center;
-      border-radius: 25px;
-     color:black;
+    text-align: center;
+    border-radius: 25px;
+    color:black;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
 
-      font-size: 200%;
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-     padding-left: 5%;
-     padding-right: 5%;
-
-    background-color: aquamarine;
+    background-color: green;
  
     display: inline-grid;
 
@@ -76,9 +76,6 @@
      
 }
 
-.thewholesite {
-    background-color: #e4f9ff ;
-}
 
 .leftside {
 
@@ -116,7 +113,6 @@ Link:hover {
     
     } 
 
- 
 
 
 

@@ -6,25 +6,25 @@ import Page2 from './Page2';
 import {Link} from "react-router-dom";
 
 
+
 function Home(){
 
 
 return(
     <>
       
-      
+     
       
 
 
-<div className = "thewholesite">
+
 
 
 <video autoPlay muted loop id="video" height = "100%" width = "101.2%" style={{marginLeft : "-0.6%", marginTop : "-0.6%"}}>
     <source src="/rain2.mp4" type="video/mp4"/>
     </video>
 
-    <div className = "title"> Evaluate </div>
-    
+    <div className = "title"> E-VALUATE </div>
     
     <div className = "buttons">
     
@@ -65,9 +65,6 @@ return(
         </div>
 
     </div>
-
-    </div>
-
 
     </>
 
