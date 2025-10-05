@@ -81,7 +81,7 @@ return(
             </div>
             <div className = "rightscreenshot">
 
-            <img src = "./screenshot.png" height = "90%" width = "80%"></img>
+            <img src = "./scout.png" height = "100%" width = "80%"></img>
             </div>
 
             <div className = "rightpara">
