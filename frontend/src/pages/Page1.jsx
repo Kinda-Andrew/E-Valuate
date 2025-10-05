@@ -1,100 +1,187 @@
 import React from "react";
-import './Page1.css'
-import Home from './Home';
+import "./Page1.css";
+
 import { useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
+function Page1() {
+  const [inputFile, setInputFile] = useState(null);
+  const [outputFile, setOutputFile] = useState(null);
+  const [descriptions, setDescriptions] = useState([]);
 
-
- 
-
-function Page1(){
-     const[inputFile,setInputFile] = useState(null);
-     const[ouputFile,setOutputFile] = useState(null);
-
-     async function handleSubmit(event){
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData();
     formData.append("file", inputFile);
 
-    
-    const res = await fetch(`${process.env.VITE_API_URL}/getPhoto`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: formData,});
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/getPhoto`, {
+      method: "POST",
+      body: formData,
+    });
 
-    console.log(res);
+    const blob = await res.blob(); // <-- instead of .json()
+    const imageUrl = URL.createObjectURL(blob);
+    console.log(imageUrl);
+    setOutputFile(imageUrl);
 
-}
-    
+    const descriptionHeader = res.headers.get("Descriptions");
 
-    return(
-        
-        
+    const parsed = JSON.parse(descriptionHeader);
+
+    console.log(parsed);
+
+    if (parsed.ev_charging) {
+      for (var i = 0; i < parsed.ev_charging.length; i += 1) {
+        setDescriptions((prev) => [...prev, parsed.ev_charging[i].reasoning]);
+      }
+    }
+
+    if (parsed.trees) {
+      for (var i = 0; i < parsed.trees.length; i += 1) {
+        setDescriptions((prev) => [...prev, parsed.trees[i].reasoning]);
+      }
+    }
+
+    if (parsed.bike_racks) {
+      for (var i = 0; i < parsed.bike_racks.length; i += 1) {
+        setDescriptions((prev) => [...prev, parsed.trees[i].reasoning]);
+      }
+    }
+  }
+
+  if (inputFile) {
+    if (!outputFile) {
+      return (
         <>
-        <div className = "button2">
-        <Link to="/" style={{ textDecoration: 'none' , color: "white"}}>
-        Home!
-        </Link>
-        </div>
+          <div className="button2">
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              Home!
+            </Link>
+          </div>
 
+          <div className="grid">
+            <div className="item1">
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="file"
+                  onChange={(event) => {
+                    setInputFile(event.target.files[0]);
+                  }}
+                ></input>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <div className="item2">
+              <img src="./arrow.png" width="80px"></img>
+            </div>
+            <div className="item3">
+              <img src={URL.createObjectURL(inputFile)} width="80%"></img>
+            </div>
+          </div>
+
+          {/* This is the bottom part */}
+          <div className="bottompart">
+            <div className="transformed">
+              {/* This is a sample image of a transformed photo */}
+            </div>
+
+            {/* This part contains information about the photo */}
+            <div className="info">
+              Lorus Ipusum or something i dont even know anymore
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <div className="button2">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            Home!
+          </Link>
+        </div>
 
         <div className="grid">
-            <div class="item1">
+          <div className="item1">
             <form onSubmit={handleSubmit}>
-                <input type="file" onChange={(event)=>{setInputFile(event.target.files[0]);}}></input>
-                <button type="submit">Submit</button>
+              <input
+                type="file"
+                onChange={(event) => {
+                  setInputFile(event.target.files[0]);
+                }}
+              ></input>
+              <button type="submit">Submit</button>
             </form>
-            </div>
-            <div class="item2">
-                <img src="./arrow.png" width="80px"></img>
-            </div>
-            <div class="item3">
-                <img src="./scout.png" width="80%"></img>
-            </div>
-            
+          </div>
+          <div className="item2">
+            <img src="./arrow.png" width="80px"></img>
+          </div>
+          <div className="item3">
+            <img src={URL.createObjectURL(inputFile)} width="80%"></img>
+          </div>
         </div>
-
-
-
 
         {/* This is the bottom part */}
-      <div className = "bottompart"> 
-
-        <div className = "transformed">
-
+        <div className="bottompart">
+          <div className="transformed">
             {/* This is a sample image of a transformed photo */}
+            <img src={outputFile} width="80%"></img>
+          </div>
 
-            <img src = "./scout.png" width = "95%" height = "100%"></img>
-
-
+          {/* This part contains information about the photo */}
+          <div className="info">
+            <ul>
+              {descriptions.map((desc, index) => (
+                <li style={{ fontSize: "16px" }} key={index}>
+                  {desc}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-
-        {/* This part contains information about the photo */}
-        <div className = "info">
-            Lorus Ipusum or something i dont even know anymore
-        </div>
-
-
-      </div>
-
-
-
-        </>
-
+      </>
     );
+  } else {
+    return (
+      <>
+        <div className="button2">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            Home!
+          </Link>
+        </div>
 
+        <div className="grid">
+          <div className="item1">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="file"
+                onChange={(event) => {
+                  setInputFile(event.target.files[0]);
+                }}
+              ></input>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+          <div className="item2">
+            <img src="./arrow.png" width="80px"></img>
+          </div>
+          <div className="item3"></div>
+        </div>
 
-   
-        <h1>{inputFile.name}</h1>
+        {/* This is the bottom part */}
+        <div className="bottompart">
+          <div className="transformed">
+            {/* This is a sample image of a transformed photo */}
+          </div>
 
-
-
-
+          {/* This part contains information about the photo */}
+          <div className="info"></div>
+        </div>
+      </>
+    );
+  }
 }
-
 
 export default Page1;

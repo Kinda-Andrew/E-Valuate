@@ -2,8 +2,18 @@ from fastapi import FastAPI
 from fastapi import UploadFile, File
 from fastapi.responses import JSONResponse
 from gemini import generateGeminiContent
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # explicit origin
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["Descriptions"],
+)
 
 @app.get("/")
 def test():
@@ -11,5 +21,6 @@ def test():
 
 @app.post("/getPhoto")
 async def getPhoto(file: UploadFile = File(...)):
-    result = generateGeminiContent(file.file)
-    return JSONResponse(content=result)
+    
+    result = await generateGeminiContent(file)
+    return result
