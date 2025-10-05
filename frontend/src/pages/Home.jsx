@@ -36,10 +36,10 @@ return(
     </div>
 
     
-    <div className = "button2">
-    <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
+    <div className = "button2" style={{textDecoration: 'none' , color: "white"}}>
+    <a href="Scout.html"  style={{textDecoration: 'none' , color: "white"}}>
     Scout
-    </Link>
+    </a>
     </div>
 
     </div>
@@ -54,7 +54,7 @@ return(
  
     
         <div className = "leftside">
-        <div className = "button3">
+        <div className = "button3"  style={{textDecoration: 'none' , color: "white"}}>
 
             <Link to="/Page1" style={{ textDecoration: 'none' , color: "white"}}>
             Eco-Vision
@@ -77,17 +77,17 @@ return(
         </div>
 
         <div className = "rightside">
-            <div className = "button4">
-                <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
+            <div className = "button4"  style={{textDecoration: 'none' , color: "white"}}>
+            <a href="Scout.html"  style={{textDecoration: 'none' , color: "white"}}>
                 Scout
-                </Link>
+                </a>
             </div>
             <div className = "rightscreenshot">
 
 
-            <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
+            <a href="Scout.html"  style={{textDecoration: 'none' , color: "white"}}>
      
-            <img src = "./scout.png" height = "100%" width = "80%"></img></Link>
+            <img src = "./scout.png" height = "100%" width = "80%"></img></a>
 
             </div>
 

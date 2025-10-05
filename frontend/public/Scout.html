@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout</title>
+    <!-- Load Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Set the map container to fill its space */
+        #map {
+            height: 100%;
+            min-height: 400px;
+            width: 100%;
+            border-radius: 0.5rem; /* rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">SCOUT</h1>
+        <p class="text-gray-600 mb-6">
+            This application simulates solar analysis data. Click to place a line to make a polygon. The selected area will be highlighted and analyzed.
+        </p>
+
+        <!-- Main Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Map Container -->
+            <div class="lg:col-span-2">
+                <div id="map"></div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <h2 class="text-xl font-semibold text-indigo-700 mb-4">Solar Insights</h2>
+                
+                <div id="results-container">
+                    <p class="text-sm text-gray-500 mb-4" id="instructions">
+                        Awaiting polygon selection. Use the drawing tool on the map to outline an area.
+                    </p>
+
+                    <!-- Loading/Message -->
+                    <div id="message" class="hidden p-3 rounded-lg border text-sm"></div>
+
+                    <!-- Display for Coordinates -->
+                    <div id="coords" class="mt-4 p-3 bg-gray-50 rounded-lg text-sm hidden"></div>
+
+                    <!-- Results Content (Actual data) -->
+                    <div id="data-display" class="space-y-4 mt-4 hidden">
+                        <div class="border-b pb-2">
+                            <p class="text-xs text-gray-500">Polygon Area ($m^2$)</p>
+                            <p id="roof-area" class="text-2xl font-bold text-gray-900">N/A</p>
+                        </div>
+                        <div class="border-b pb-2">
+                            <p class="text-xs text-gray-500">Estimated Annual Energy (kWh)</p>
+                            <p id="annual-energy" class="text-2xl font-bold text-green-600">N/A</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Max Panel Capacity ($kW$)</p>
+                            <p id="max-kw" class="text-2xl font-bold text-blue-600">N/A</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!--  REPLACE '_MAPS_JS_API_KEY_' with your Maps JavaScript API key (required to load the map) -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=_MAPS_JS_API_KEY_&libraries=geometry,drawing&callback=initMap"
+        async defer>
+    </script>
+
+    <script>
+        let map;
+        let selectedPolygon;
+        let drawingManager;
+        
+        /**
+         * Initializes the Google Map and Drawing Manager.
+         */
+        function initMap() {
+            // Check for placeholder key (optional sanity check, can be removed)
+            const scriptSrc = document.querySelector('script[src*="maps.googleapis.com"]').src;
+            if (scriptSrc.includes('key=_MAPS_JS_API_KEY_')) {
+                updateMessage("Please replace '_MAPS_JS_API_KEY_' in the HTML script tag to see a functional map.", 'red');
+            }
+
+            // default location sfu burnaby, 
+            const initialLocation = { lat: 49.278962, lng: -122.916490 };
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: initialLocation,
+                mapTypeId: 'satellite', 
+                streetViewControl: false,
+                mapTypeControl: true,
+                fullscreenControl: false,
+            });
+
+            // polygon drawing manager
+            drawingManager = new google.maps.drawing.DrawingManager({
+                drawingMode: google.maps.drawing.OverlayType.POLYGON,
+                drawingControl: true,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER,
+                    drawingModes: ['polygon']
+                },
+                polygonOptions: {
+                    fillColor: '#4f46e5', // highlight
+                    fillOpacity: 0.5,
+                    strokeWeight: 3,
+                    strokeColor: '#4f46e5',
+                    clickable: true,
+                    editable: true,
+                    zIndex: 1
+                }
+            });
+            drawingManager.setMap(map);
+
+            //when a shape is completed
+            google.maps.event.addListener(drawingManager, 'overlaycomplete', onPolygonComplete);
+            
+            document.getElementById('instructions').textContent = "Map loaded! Use the drawing tool (top center of map) to outline an area.";
+        }
+
+        /**
+         * clears old polygon and handles the new one
+         */
+        function onPolygonComplete(event) {
+            if (event.type !== google.maps.drawing.OverlayType.POLYGON) return;
+
+            // 1 clear old polygon if it exists
+            if (selectedPolygon) {
+                selectedPolygon.setMap(null);
+            }
+            selectedPolygon = event.overlay;
+            
+            // disable drawing mode after polygon creation
+            drawingManager.setDrawingMode(null);
+
+            // 2. Calculate the center of the drawn polygon 
+            const center = getPolygonCenter(selectedPolygon);
+            
+            // 2cont. calculate the actual area of the drawn polygon 
+            const path = selectedPolygon.getPath();
+            // the geometry library here to compute the area of the polygon on the sphere
+            const polygonAreaSqM = google.maps.geometry.spherical.computeArea(path);
+
+
+            if (center && polygonAreaSqM > 0) {
+                // 3 trigger the data simulation, passing the calculated area
+                simulateSolarPotential(center.lat(), center.lng(), polygonAreaSqM);
+            } else {
+                updateMessage('Error: Polygon area is too small or invalid.', 'red');
+            }
+        }
+
+        /**
+         * centroid of a polygon's bounds
+         */
+        function getPolygonCenter(polygon) {
+            const path = polygon.getPath();
+            if (!path || path.getLength() === 0) return null;
+            
+            let bounds = new google.maps.LatLngBounds();
+            path.getArray().forEach(point => bounds.extend(point));
+
+            return bounds.getCenter();
+        }
+        
+        /**
+         * applying statistical regressed data scaled to the area
+         */
+        function applyRegressedData(areaSqM) {
+            
+            // --- NEW, MORE CONSERVATIVE SCALING LOGIC ---
+            
+            // 1. Assume only 30% (down from 70%) of the selected area is usable roof space 
+            const viableArea = areaSqM * 0.3; 
+            
+            // 2. Max panels: Panel space configured off of amount of space taken by panels in various city scapes
+            const panelFootprintSqM = 15.0;
+            const maxPanels = Math.floor(viableArea / panelFootprintSqM); 
+            
+            // 3. Annual energy: Assume 2500 kWh per panel per year
+            const energyPerPanel = 2500;
+            const annualKwh = maxPanels * energyPerPanel; 
+
+            // --- SCALING LOGIC done ---
+
+            return {
+                totalRoofAreaSqM: areaSqM.toFixed(1), //the area of the polygon
+                maxPanels: maxPanels,
+                estimatedKwCapacity: (maxPanels * 0.4).toFixed(2), // Still assuming a standard 0.4kW panel
+                annualKwh: annualKwh
+            };
+        }
+
+        /**
+         * Simulates fetching data for user experience
+         */
+        async function simulateSolarPotential(lat, lng, areaSqM) {
+            updateUIState(lat, lng, true); // Show loading state
+            
+            try {
+                // 1. Simulate network delay (e.g., 800ms)
+                await new Promise(resolve => setTimeout(resolve, 800)); 
+
+                // 2. apply regressed data based on area
+                const data = applyRegressedData(areaSqM);
+                
+                // 3. Display Results
+                document.getElementById('roof-area').textContent = `${data.totalRoofAreaSqM}`;
+                document.getElementById('annual-energy').textContent = `${data.annualKwh.toLocaleString()} kWh`;
+                document.getElementById('max-kw').textContent = `${data.estimatedKwCapacity} kW (${data.maxPanels} panels)`;
+                
+                updateMessage("Simulation complete! Regressed data used to simulate solar panel space in polygon area.", 'green');
+                document.getElementById('data-display').classList.remove('hidden');
+
+            } catch (error) {
+                updateMessage(`Simulation Error: Could not process data. ${error.message}`, 'red');
+                console.error("Simulation Error:", error);
+            }
+        }
+        
+        /**
+         * Utility function to update the message box style and content.
+         */
+        function updateMessage(text, type) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = text;
+            messageElement.classList.remove('hidden', 'border-yellow-300', 'bg-yellow-50', 'text-yellow-800', 'border-red-300', 'bg-red-50', 'text-red-800', 'border-green-300', 'bg-green-50', 'text-green-800');
+            
+            if (type === 'loading') {
+                messageElement.classList.add('border-yellow-300', 'bg-yellow-50', 'text-yellow-800');
+            } else if (type === 'green') {
+                messageElement.classList.add('border-green-300', 'bg-green-50', 'text-green-800');
+            } else if (type === 'red') {
+                messageElement.classList.add('border-red-300', 'bg-red-50', 'text-red-800');
+            }
+        }
+
+        /**
+         * Utility function to update UI state (loading/coords).
+         */
+        function updateUIState(lat, lng, isLoading) {
+            const coordsElement = document.getElementById('coords');
+            coordsElement.innerHTML = `<span class="font-semibold">Simulated Query Center:</span> Lat ${lat.toFixed(6)}, Lng ${lng.toFixed(6)}`;
+            coordsElement.classList.remove('hidden');
+            document.getElementById('data-display').classList.add('hidden');
+
+            if (isLoading) {
+                 updateMessage("Analyzing area and generating simulated data...", 'loading');
+            }
+        }
+    </script>
+</body>
+</html>

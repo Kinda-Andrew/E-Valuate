@@ -43,6 +43,7 @@ body {
     width: 20wh;
     display: inline-grid;
     border-radius: 25px;
+    text-decoration:none;
 
     padding-left: 3%;
     padding-right: 3%;
@@ -57,6 +58,8 @@ body {
 
 .button2 {
     text-align: center;
+     
+
     border-radius: 25px;
     color:black;
     font-size: 200%;
@@ -217,12 +220,7 @@ Link:hover {
 .leftpara {
 
     margin-top: 10%;
-
-<<<<<<< HEAD
-=======
-
->>>>>>> d169e4b3ceeb44940f21a355b9d39ff426532553
-
+ 
 
     /* newest ver on bt */
 }
