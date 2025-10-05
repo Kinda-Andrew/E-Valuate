@@ -3,11 +3,15 @@
     font-family: cursive;
     text-align: center;
     padding: 10%;
-    
+    z-index:2;
  
 }
  
-
+.video {
+    z-index: 1;
+    position: absolute;
+    margin-top: -40%;
+}
 
 .lowerpart {
     text-align:center;
