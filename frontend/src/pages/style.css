@@ -1,0 +1,26 @@
+.button2 {
+    text-align: center;
+    
+    border-radius: 25px;
+    color:black;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    background-color: green;
+    padding-bottom: 4%;
+    border-color: black;
+    border-style: solid;
+    border-width: 2%;
+
+    display: inline-grid;
+
+}
+
+
+.button2:hover{
+    background-color: #00c800;
+    transition-duration: 0.5s;
+    font-size: 203%;
+
+}

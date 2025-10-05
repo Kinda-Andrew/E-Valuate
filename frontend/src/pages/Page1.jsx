@@ -1,8 +1,10 @@
 import React from "react";
+
 import "./Page1.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 
 function Page1() {
   const [inputFile, setInputFile] = useState(null);
@@ -27,9 +29,11 @@ function Page1() {
 
     const descriptionHeader = res.headers.get("Descriptions");
 
+
     const parsed = JSON.parse(descriptionHeader);
 
     console.log(parsed);
+
 
     if (parsed.ev_charging) {
       for (var i = 0; i < parsed.ev_charging.length; i += 1) {

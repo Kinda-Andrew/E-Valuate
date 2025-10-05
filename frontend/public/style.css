@@ -1,0 +1,35 @@
+.button2 {
+    text-align: center;
+    
+    border-radius: 25px;
+    color:white;
+    font-size: 150%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    background-color: green;
+    border-style: solid;
+
+    border-color: black;
+    border-width: 4%;
+
+    display: inline-grid;
+
+}
+
+.headerscout {
+    display:inline-grid;
+    margin-left: 31%;
+}
+
+
+.button2:hover{
+    background-color: #00c800;
+    transition-duration: 0.5s;
+
+
+}
+
+body {
+    background-color:lightgray;
+}
