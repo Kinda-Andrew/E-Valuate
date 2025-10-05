@@ -6,3 +6,16 @@
     padding-top: 10%;
     padding-bottom: 10%;
 }
+
+.titlecontainer {
+    text-align: center;
+    width: 100%;
+}
+
+.headervideo {
+    position: relative;
+    height: 20%; 
+}
+
+/* Centered text */
+ 
