@@ -30,11 +30,21 @@ function Page1(){
         
         
         <>
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={(event)=>{setInputFile(event.target.files[0]);}}></input>
-            <button type="submit">Submit</button>
-        </form>
-
+        <div className="grid">
+            <div class="item1">
+            <form onSubmit={handleSubmit}>
+                <input type="file" onChange={(event)=>{setInputFile(event.target.files[0]);}}></input>
+                <button type="submit">Submit</button>
+            </form>
+            </div>
+            <div class="item2">
+                <img src="./arrow.png" width="80px"></img>
+            </div>
+            <div class="item3">
+                <img src="./scout.png" width="80%"></img>
+            </div>
+            
+        </div>
         </>
 
     );
