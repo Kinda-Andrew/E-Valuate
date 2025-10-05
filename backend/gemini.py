@@ -37,7 +37,32 @@ def generateGeminiContent(bytes):
     rawText = response.text
     clean = re.sub(r"^```json|```$", "", rawText, flags=re.MULTILINE).strip()
     data = json.loads(clean)
-    print(data["trees"])
+    print(data)
+
+    # Overlay icons based on gemini response
+
+    base = Image.open(BytesIO(resp.content)).convert("RGBA")
+
+    
+    #tree incons
+
+    for tree in data["trees"]:
+        base.alpha_composite(Image.open("icons/tree.png").convert("RGBA").resize((75, 75)),dest=(tree["x"],tree["y"]))
+    
+     #ev charging incons
+    for charger in data["ev_charging"]:
+        base.alpha_composite(Image.open("icons/charging-station.png").convert("RGBA").resize((75, 75)),dest=(charger["x"],charger["y"]))
+    
+     #bike rack incons
+    for bike in data["bike_racks"]:
+        base.alpha_composite(Image.open("icons/bicycle.png").convert("RGBA").resize((75, 75)),dest=(bike["x"],bike["y"]))
+    
+
+    # Save Image
+    base.save("annotated_output.png")
+
+
+
 
     
 
@@ -47,12 +72,8 @@ resp = requests.get("https://everlinecoatings.com/us/wp-content/uploads/sites/2/
 
 generateGeminiContent(resp.content)
 
-#Calulate acutal dimensions of pricture
-
-width, height = Image.open(BytesIO(resp.content)).size
 
 
-print(f"Width: {width}px, Height: {height}px")
 
 
 
