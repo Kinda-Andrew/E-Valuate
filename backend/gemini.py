@@ -37,6 +37,8 @@ async def generateGeminiContent(file: UploadFile = File(...)):
         }]
     )
 
+    print(response)
+
 
     # clean up data from gemini which contains coordinates and reasoning for each point
     rawText = response.text
@@ -46,7 +48,7 @@ async def generateGeminiContent(file: UploadFile = File(...)):
 
     # Overlay icons based on gemini response
 
-    base = Image.open(BytesIO(resp.content)).convert("RGBA")
+    base = Image.open(BytesIO(bytes)).convert("RGBA")
     width, height = base.size
 
     #Filter out invalid data points
@@ -85,7 +87,7 @@ async def generateGeminiContent(file: UploadFile = File(...)):
     return StreamingResponse(
         img_io,
         media_type="image/png",
-        headers={"X-Coordinates": json.dumps(data)}  # optional: pass coordinates as header or in a separate endpoint
+        headers={"Descriptions": json.dumps(data)}  
     )
 
 
@@ -93,10 +95,6 @@ async def generateGeminiContent(file: UploadFile = File(...)):
 
     
 
-resp = requests.get("https://as2.ftcdn.net/v2/jpg/01/13/27/09/1000_F_113270995_v0RgIm4UIV0VFJw30vM4ZeptxaeHZOuK.jpg")
-
-
-generateGeminiContent(resp.content)
 
 
 
