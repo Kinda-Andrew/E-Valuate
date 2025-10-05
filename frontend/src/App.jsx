@@ -4,8 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-import Page1 from './pages/page1';
-import Page2 from './pages/page2';
+import Page1 from './pages/Page1';
+import Page2 from './pages/Page2';
 import Home from './pages/Home';
 
 function App() {

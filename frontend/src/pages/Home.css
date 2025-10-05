@@ -1,34 +1,95 @@
 .title {
-    font-size: 300%;
+    font-size: 600%;
     font-family: cursive;
     text-align: center;
     padding: 10%;
     z-index:2;
-    margin-top: -20%;
+    margin-top: -38%;
+    color: white;
+
  
 }
  
 .video {
     z-index: 1;
-    padding: -5%;
+    padding-left: 0px;
+    width: 100vw;
+    margin: -80%;
+    padding-bottom: 2%;
      
 }
 
+.buttons {
+    z-index: 4;
+    text-align: center;
+    margin-top: -3%;
+    text-decoration: none;
+
+    position: relative
+    
+ }
+
+.button1 {
+ 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+     font-weight: bold;
+    font-size: 200%;
+    width: 20wh;
+    display: inline-grid;
+    border-radius: 25px;
+    color:aquamarine;
+
+
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: aquamarine;
+
+}
+
+
+.button2 {
+     text-align: center;
+      border-radius: 25px;
+     color:black;
+
+      font-size: 200%;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+     padding-left: 5%;
+     padding-right: 5%;
+
+    background-color: aquamarine;
+ 
+    display: inline-grid;
+
+}
+
+
 .lowerpart {
+    margin-top: 8%;
     text-align:center;
     border-top: solid;
+    border-top-width: 3%;
+    padding: 5%;
     
      
+}
+
+.thewholesite {
+    background-color: #e4f9ff ;
 }
 
 .leftside {
 
-    
+    float:left;
     display: inline-grid;
 
     text-align: center;
-    width:30%;
- 
+    width:42%;
+    border-radius: 25px;
+    background-color: #848484;
+    padding: 3%;
     
 
 
@@ -37,17 +98,23 @@
 
 .rightside {
     display: inline-grid;
+    float:right;
+    padding: 3%;
 
     
      text-align: center;
-    width:30%;
- 
- 
+    width:42%;
+    border-radius: 25px;
+    background-color: #848484;
 
  
-
-
 }
+
+Link:hover {
+
+    text-decoration: none;
+    
+    } 
 
  
 
