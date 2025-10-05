@@ -7,6 +7,8 @@ import json
 import re
 from PIL import Image
 from io import BytesIO
+from fastapi import File, UploadFile
+from fastapi.responses import StreamingResponse
 
 load_dotenv()
 
@@ -15,7 +17,10 @@ gemini_key = os.getenv("GEMINI_KEY")
 
 client = genai.Client(api_key=gemini_key)
 
-def generateGeminiContent(bytes):
+async def generateGeminiContent(file: UploadFile = File(...)):
+
+    bytes = await file.read()
+
     response = client.models.generate_content(
         model="gemini-2.5-flash",
          contents=[{
@@ -73,7 +78,15 @@ def generateGeminiContent(bytes):
     
 
     # Save Image
-    base.save("annotated_output.png")
+    img_io = BytesIO()
+    base.save(img_io, format="PNG")
+    img_io.seek(0)
+
+    return StreamingResponse(
+        img_io,
+        media_type="image/png",
+        headers={"X-Coordinates": json.dumps(data)}  # optional: pass coordinates as header or in a separate endpoint
+    )
 
 
 
