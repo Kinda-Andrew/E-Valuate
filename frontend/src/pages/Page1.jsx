@@ -5,9 +5,7 @@ import "./Page1.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 function Page1() {
-    
   const [inputFile, setInputFile] = useState(null);
   const [outputFile, setOutputFile] = useState(null);
   const [descriptions, setDescriptions] = useState([]);
@@ -30,29 +28,16 @@ function Page1() {
 
     const descriptionHeader = res.headers.get("Descriptions");
 
-
     const parsed = JSON.parse(descriptionHeader);
 
     console.log(parsed);
 
-
-    if (parsed.ev_charging) {
-      for (var i = 0; i < parsed.ev_charging.length; i += 1) {
-        setDescriptions((prev) => [...prev, parsed.ev_charging[i].reasoning]);
-      }
-    }
-
-    if (parsed.trees) {
-      for (var i = 0; i < parsed.trees.length; i += 1) {
-        setDescriptions((prev) => [...prev, parsed.trees[i].reasoning]);
-      }
-    }
-
-    if (parsed.bike_racks) {
-      for (var i = 0; i < parsed.bike_racks.length; i += 1) {
-        setDescriptions((prev) => [...prev, parsed.trees[i].reasoning]);
-      }
-    }
+    const reasons = [
+      ...(parsed.ev_charging || []).map((x) => x.reasoning),
+      ...(parsed.trees || []).map((x) => x.reasoning),
+      ...(parsed.bike_racks || []).map((x) => x.reasoning),
+    ];
+    setDescriptions(reasons);
   }
 
   if (inputFile) {
@@ -63,12 +48,9 @@ function Page1() {
             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               Home!
             </Link>
-
-            
           </div>
-          
 
-           <div className="grid">
+          <div className="grid">
             <div className="item1">
               <form onSubmit={handleSubmit}>
                 <input
@@ -84,7 +66,6 @@ function Page1() {
               <img src="./arrow.png" width="80px"></img>
             </div>
             <div className="item3">
-
               <img src={URL.createObjectURL(inputFile)} width="80%"></img>
             </div>
           </div>
@@ -112,7 +93,10 @@ function Page1() {
           </Link>
         </div>
 
-        <div className = "header"> <h1> Eco-vision</h1> </div>
+        <div className="header">
+          {" "}
+          <h1> Eco-vision</h1>{" "}
+        </div>
 
         <div className="grid">
           <div className="item1">
@@ -163,7 +147,10 @@ function Page1() {
           </Link>
         </div>
 
-        <div className = "header"> <h1> Eco-vision</h1> </div>
+        <div className="header">
+          {" "}
+          <h1> Eco-vision</h1>{" "}
+        </div>
 
         <div className="grid">
           <div className="item1">
@@ -183,9 +170,10 @@ function Page1() {
           <div className="item3"></div>
         </div>
 
-        <div className = "bitofword">
-            The AI will generate a photo of the suggested upgrades in the area below:
-            </div>
+        <div className="bitofword">
+          The AI will generate a photo of the suggested upgrades in the area
+          below:
+        </div>
         {/* This is the bottom part */}
         <div className="bottompart">
           <div className="transformed">
@@ -194,10 +182,8 @@ function Page1() {
 
           {/* This part contains information about the photo */}
           <div className="info">
-          Please wait while the AI analyzes your image.
-
+            Please wait while the AI analyzes your image.
           </div>
-          
         </div>
       </>
     );
