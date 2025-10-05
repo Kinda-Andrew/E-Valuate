@@ -1,224 +1,223 @@
 body {
-    font-family: "Montserrat", sans-serif;
-    background-color: gray;
-  }
-  
-  .title {
-      font-size: 600%;
-      text-align: center;
-      padding: 10%;
-      z-index:2;
-      margin-top: -38%;
-      color: white;
-      font-weight: 500;
-      text-shadow: 2px 4px 4px black;
-  }
-   
-  .video {
-      z-index: 1;
-      padding-left: 0px;
-      width: 100vw;
-      margin: -80%;
-      padding-bottom: 2%;
-      outline-offset: 40%;
-      border-bottom: solid;
-      border-bottom-width: 3%;
-       
-  }
-  
-  .buttons {
-      z-index: 4;
-      text-align: center;
-      margin-top: -3%;
-      text-decoration: none;
-      position: relative;
-      gap: 80px;
-      display: flex;
-      justify-content: center;
-   }
-  
-  .button1 {
-      text-align: center;
-      font-size: 200%;
-      width: 20wh;
-      display: inline-grid;
-      border-radius: 25px;
-  
-      padding-left: 3%;
-      padding-right: 3%;
-      background-color: green;
-  
-      border-color: black;
-      border-style: solid;
-      border-width: 2%;
-  
-  
-  }
-  
-  .button2 {
-      text-align: center;
-      border-radius: 25px;
-      color:black;
-      font-size: 200%;
-      padding-left: 5%;
-      padding-right: 5%;
-  
-      background-color: green;
-  
-      border-color: black;
-      border-style: solid;
-      border-width: 2%;
-  
-      display: inline-grid;
-  
-  }
-  
-  
-  .lowerpart {
-      margin-top: 8%;
-      text-align:center;
-  
-      position: relative;
-      
-      padding: 5%;
-      
-  }
-  
-  
-  .leftside {
-      float: left;
-      display: inline-grid;
-      text-align: center;
-      width:42%;
-      border-radius: 25px;
-      background-color: darkgray;
-      padding: 3%;
-  
-  }
-  
-  .leftside:hover{
-    transform: scale(1.03);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .leftsidetext {
-      margin-bottom: 25px;
-  
-  }
-  
-  .rightside {
-      display: inline-grid;
-      float:right;
-      padding: 3%;
-  
-      
-      text-align: center;
-      width:42%;
-      border-radius: 27px;
-      background-color: darkgray;
-  
-  }
-  
-  .rightside:hover{
-    transform: scale(1.03);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .rightsidetext {
-      margin-bottom: 25px;
-  }
-  
-  Link:hover {
-      text-decoration: none;
-      
-  } 
-  
-  .description {
-      text-align: center;
-      z-index:2;
-      color: white;
-      margin-bottom: 70px;
-      font-size: 300%
-  }
-  
-  
-  
-  
-  /* Centered text */
-  .button3 {
-   
-      text-align: center;
-      font-size: 200%;
-      width: 20wh;
-      display: inline-grid;
-      border-radius: 25px;
-  
-      padding-left: 3%;
-      padding-right: 3%;
-      background-color: green;
-  
-  }
-  
-  .button1:hover{
-      background-color: #00c800;
-      transition-duration: 0.5s;
-      font-size: 203%;
-  
-  }
-  
-  .button2:hover{
-      background-color: #00c800;
-      transition-duration: 0.5s;
-      font-size: 203%;
-  
-  }
-  
-  .button3:hover{
-      background-color: #00c800;
-      transition-duration: 0.5s;
-      font-size: 201%;
-  
-  }
-  
-  .button4:hover{
-      background-color: #00c800;
-      transition-duration: 0.5s;
-      font-size: 203%;
-  
-  }
-  
-  .rightscreenshot {
-      margin-top: 10%;
-  
-  }
-  
-  .leftscreenshot {
-      margin-top: 10%;
-  }
-  .button4 {
-      text-align: center;
-      border-radius: 25px;
-      color:black;
-      font-size: 200%;
-      padding-left: 5%;
-      padding-right: 5%;
-  
-      background-color: green;
-   
-      display: inline-grid;
-  
-  }
-  
-   
-  .rightpara {
-      margin-top: 10%;
-  }
-  
-  .leftpara {
-      margin-top: -10%;
-  
-  
-      /* newest ver on bt */
-  }
-   
-  
+  font-family: "Montserrat", sans-serif;
+  background-color: gray;
+}
+
+.title {
+    font-size: 600%;
+    text-align: center;
+    padding: 10%;
+    z-index:2;
+    margin-top: -38%;
+    color: white;
+    font-weight: 500;
+    text-shadow: 2px 4px 4px black;
+}
+ 
+.video {
+    z-index: 1;
+    padding-left: 0px;
+    width: 100vw;
+    margin: -80%;
+    padding-bottom: 2%;
+    outline-offset: 40%;
+    border-bottom: solid;
+    border-bottom-width: 3%;
+     
+}
+
+.buttons {
+    z-index: 4;
+    text-align: center;
+    margin-top: -3%;
+    text-decoration: none;
+    position: relative;
+    gap: 80px;
+    display: flex;
+    justify-content: center;
+ }
+
+.button1 {
+    text-align: center;
+    font-size: 200%;
+    width: 20wh;
+    display: inline-grid;
+    border-radius: 25px;
+
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: green;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 2%;
+
+
+}
+
+.button2 {
+    text-align: center;
+    border-radius: 25px;
+    color:black;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    background-color: green;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 2%;
+
+    display: inline-grid;
+
+}
+
+
+.lowerpart {
+    margin-top: 8%;
+    text-align:center;
+
+    position: relative;
+    
+    padding: 5%;
+    
+}
+
+
+.leftside {
+    float: left;
+    display: inline-grid;
+    text-align: center;
+    width:42%;
+    border-radius: 25px;
+    background-color: darkgray;
+    padding: 3%;
+
+}
+
+.leftside:hover{
+  transform: scale(1.03);
+  transition: all 0.3s ease-in-out;
+}
+
+.leftsidetext {
+    margin-bottom: 25px;
+
+}
+
+.rightside {
+    display: inline-grid;
+    float:right;
+    padding: 3%;
+
+    
+    text-align: center;
+    width:42%;
+    border-radius: 27px;
+    background-color: darkgray;
+
+}
+
+.rightside:hover{
+  transform: scale(1.03);
+  transition: all 0.3s ease-in-out;
+}
+
+.rightsidetext {
+    margin-bottom: 25px;
+}
+
+Link:hover {
+    text-decoration: none;
+    
+} 
+
+.description {
+    text-align: center;
+    z-index:2;
+    color: white;
+    margin-bottom: 70px;
+    font-size: 300%
+}
+
+
+
+
+/* Centered text */
+.button3 {
+ 
+    text-align: center;
+    font-size: 200%;
+    width: 20wh;
+    display: inline-grid;
+    border-radius: 25px;
+
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: green;
+
+}
+
+.button1:hover{
+    background-color: #00c800;
+    transition-duration: 0.5s;
+    font-size: 203%;
+
+}
+
+.button2:hover{
+    background-color: #00c800;
+    transition-duration: 0.5s;
+    font-size: 203%;
+
+}
+
+.button3:hover{
+    background-color: #00c800;
+    transition-duration: 0.5s;
+    font-size: 201%;
+
+}
+
+.button4:hover{
+    background-color: #00c800;
+    transition-duration: 0.5s;
+    font-size: 203%;
+
+}
+
+.rightscreenshot {
+    margin-top: 3%;
+
+}
+
+.leftscreenshot {
+    margin-top: 3%;
+}
+.button4 {
+    text-align: center;
+    border-radius: 25px;
+    color:black;
+    font-size: 200%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    background-color: green;
+ 
+    display: inline-grid;
+
+}
+
+ 
+.rightpara {
+    margin-top: 10%;
+}
+
+.leftpara {
+    margin-top: 10%;
+
+
+    /* newest ver on bt */
+}
+ 
