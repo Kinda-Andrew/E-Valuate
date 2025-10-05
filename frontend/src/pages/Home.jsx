@@ -84,9 +84,11 @@ return(
             </div>
             <div className = "rightscreenshot">
 
+
             <Link to="/Page2" style={{ textDecoration: 'none' , color: "white"}}>
      
             <img src = "./scout.png" height = "100%" width = "80%"></img></Link>
+
             </div>
 
             <div className = "rightpara">
