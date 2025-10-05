@@ -11,5 +11,5 @@ def test():
 
 @app.post("/getPhoto")
 async def getPhoto(file: UploadFile = File(...)):
-    result = generateGeminiContent(file)
+    result = generateGeminiContent(file.file)
     return JSONResponse(content=result)
