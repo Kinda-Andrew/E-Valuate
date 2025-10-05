@@ -20,6 +20,9 @@ body {
     width: 100vw;
     margin: -80%;
     padding-bottom: 2%;
+    outline-offset: 40%;
+    border-bottom: solid;
+    border-bottom-width: 3%;
      
 }
 
@@ -62,7 +65,7 @@ body {
 
     background-color: green;
 
-    border-color: white;
+    border-color: black;
     border-style: solid;
     border-width: 2%;
 
@@ -76,8 +79,7 @@ body {
     text-align:center;
 
     position: relative;
-    border-top: solid;
-    border-top-width: 3%;
+    
     padding: 5%;
     
 }
@@ -209,11 +211,11 @@ Link:hover {
 
  
 .rightpara {
-    margin-top: 4%;
+    margin-top: -2%;
 }
 
 .leftpara {
-    margin-top: 4%;
+    margin-top: -2%;
 
 
 }
