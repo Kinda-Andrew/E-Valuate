@@ -4,6 +4,8 @@ import { useState } from "react";
 
 
 
+ 
+
 function Page1(){
      const[inputFile,setInputFile] = useState(null);
      const[ouputFile,setOutputFile] = useState(null);
@@ -14,6 +16,7 @@ function Page1(){
     const formData = new FormData();
     formData.append("file", inputFile);
 
+    
     const res = await fetch(`${process.env.VITE_API_URL}/getPhoto`, {
         method: "POST",
         headers: {
@@ -30,10 +33,31 @@ function Page1(){
         
         
         <>
-        <form onSubmit={handleSubmit}>
-            <input type="file" onChange={(event)=>{setInputFile(event.target.files[0]);}}></input>
-            <button type="submit">Submit</button>
-        </form>
+
+
+
+
+        {/* This is the bottom part */}
+      <div className = "bottompart"> 
+
+        <div className = "transformed">
+
+            {/* This is a sample image of a transformed photo */}
+
+            <img src = "./scout.png" width = "95%" height = "100%"></img>
+
+
+        </div>
+
+        {/* This part contains information about the photo */}
+        <div className = "info">
+            Lorus Ipusum or something i dont even know anymore
+        </div>
+
+
+      </div>
+
+
 
         </>
 
